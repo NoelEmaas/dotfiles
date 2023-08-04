@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+## Copyright (C) 2020-2023 Aditya Shakya <adi1090x@gmail.com>
+##
+## Autostart Programs
+
+# herbstluftwm dir
+hdir="$HOME/.config/herbstluftwm"
+
+# Kill already running process
+_ps=(xsettingsd ksuperkey)
+for _prs in "${_ps[@]}"; do
+	if [[ `pidof ${_prs}` ]]; then
+		killall -9 ${_prs}
+	fi
+done
+
+# Lauch xsettingsd daemon
+xsettingsd --config="$hdir"/xsettingsd &
+
+# polkit agent
+if [[ ! `pidof xfce-polkit` ]]; then
+	/usr/lib/xfce-polkit/xfce-polkit &
+fi
+
+# Enable power management
+xfce4-power-manager &
+
+# Enable Super Keys For Menu
+ksuperkey -e 'Super_L=Alt_L|F1' &
+ksuperkey -e 'Super_R=Alt_L|F1' &
+
+# Fix cursor
+xsetroot -cursor_name left_ptr
+
+# Restore wallpaper
+#hsetroot -root -cover "$hdir"/theme/wallpaper
+hsetroot -root -solid "#BDBAB5"
+
+# Lauch notification daemon
+"$hdir"/scripts/herb_dunst
+
+# Lauch polybar
+"$hdir"/scripts/herb_bar
+
+# Lauch compositor
+"$hdir"/scripts/herb_comp
+
+# Start mpd
+exec mpd &
