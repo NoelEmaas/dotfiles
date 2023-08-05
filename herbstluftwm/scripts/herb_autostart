@@ -35,7 +35,8 @@ xsetroot -cursor_name left_ptr
 
 # Restore wallpaper
 #hsetroot -root -cover "$hdir"/theme/wallpaper
-hsetroot -root -solid "#BDBAB5"
+#hsetroot -root -solid "#BDBAB5"
+feh --bg-scale "$hdir"/wallpaper.jpg &
 
 # Lauch notification daemon
 "$hdir"/scripts/herb_dunst

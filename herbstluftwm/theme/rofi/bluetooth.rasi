@@ -59,9 +59,9 @@ window {
     enabled:                     true;
     margin:                      0px;
     padding:                     0px;
-    border:                      0px solid;
-    border-radius:               12px;
-    border-color:                @border-colour;
+    border:                      45px 2px 2px 2px solid;
+    border-radius:               0px;
+    border-color:                @border-color;
     cursor:                      "default";
     /* Backgroud Colors */
     background-color:            @background-colour;
@@ -91,7 +91,7 @@ mainbox {
 /*****----- Inputbar -----*****/
 inputbar {
     enabled:                     true;
-    spacing:                     20px;
+    spacing:                     0px;
     margin:                      0px;
     padding:                     0px 0px 0px 0px;
     border:                      0px 0px 0px 0px;
@@ -105,17 +105,17 @@ inputbar {
 prompt {
     enabled:                     true;
     padding:                     8px 10px;
-    border-radius:               6px;
-    background-color:            @selected;
-    text-color:                  @background;
+    border-radius:               0px;
+    background-color:            var(alternate-background);
+    text-color:                  @foreground;
 }
 textbox-prompt-colon {
     enabled:                     true;
     padding:                     8px 12px;
-    border-radius:               6px;
+    border-radius:               0px;
     expand:                      false;
-    str:                         "";
-    background-color:            @background-alt;
+    str:                         " ";
+    background-color:            @border-color;
     text-color:                  @foreground;
 }
 entry {
@@ -188,9 +188,9 @@ element {
     spacing:                     0px;
     margin:                      0px;
     padding:                     8px 10px;
-    border-radius:               6px;
-    border:                      0px solid;
-    border-color:                @border-colour;
+    border-radius:               0px;
+    border:                      0px 0px 0px 2px solid;
+    border-color:                @background;
     background-color:            transparent;
     text-color:                  @foreground-colour;
     cursor:                      pointer;
@@ -208,8 +208,9 @@ element normal.active {
     text-color:                  var(active-foreground);
 }
 element selected.normal {
-    background-color:            var(selected-normal-background);
-    text-color:                  var(selected-normal-foreground);
+    background-color:            var(alternate-background);
+    text-color:                  var(normal-foreground);
+    border-color:                @border-color;
 }
 element selected.urgent {
     background-color:            var(selected-urgent-background);
