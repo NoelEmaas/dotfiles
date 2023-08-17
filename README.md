@@ -19,7 +19,14 @@
   <samp>Installation</samp>
 </h2>
 
-(WIP) Just manually install it yourself for now.
+Note: The setup file will only work on ubuntu based distros
+
+```
+$ git clone https://github.com/NoelEmaas/dotfiles.git
+$ cd dotfiles
+$ chmod +x setup.sh
+$ sudo ./setup.sh
+```
 
 <h2>
   <samp>Information</samp>
