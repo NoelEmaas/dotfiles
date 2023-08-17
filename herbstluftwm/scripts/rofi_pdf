@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# Path to your documents folder containing PDF books
+PDF_FOLDER="$HOME/Documents/PDF"
+
+# Use find to locate all PDF files in the documents folder and store them in an array
+readarray -t PDF_FILES < <(find "$PDF_FOLDER" -name "*.pdf" -type f)
+
+for index in "${!PDF_FILES[@]}"; do
+  filename=$(basename "${PDF_FILES[index]}")
+  PDF_FILES[index]="$filename"
+done
+
+# Use Rofi to display the list of PDF files and select one
+selected_file=$(printf "%s\n" "${PDF_FILES[@]}" | rofi -dmenu -i -p "Select a PDF:" -theme "$HOME/.config/herbstluftwm/theme/rofi/pdf_launcher.rasi")
+
+# Open the selected PDF file using a PDF viewer (replace "zathura" with your preferred PDF viewer)
+if [ -n "$selected_file" ]; then
+    zathura "$PDF_FOLDER/$selected_file" &
+fi
+
